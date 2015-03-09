@@ -8,6 +8,8 @@
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-1.11.2.js"></script>
+		<script src="js/bootstrap.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -36,22 +38,57 @@
 				</div>
 			</div>
 			<div class="row text-center">
-				<div class="col-md-4 center-block">
+				<div class="col-md-4 center-block" data-toggle="modal" data-target="#viewDetails"
+				data-title="Appify" data-text="This was my first project in this class. I learned a lot about HTML and CSS." data-picture="img/tech.jpg">
 					<img class="img-responsive" src="img/tech.jpg" alt="Appify image">
 					<h3 class="text-uppercase"><strong>Appify<strong></h3>
 					<p>https://github.com/udacity/appify</p>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4" data-toggle="modal" data-target="#viewDetails"
+				data-title="Sunflower" data-text="This was my 2nd project in this class. I learned a lot more about HTML and CSS." data-picture="img/animal.jpg">
 					<img class="img-responsive" src="img/animal.jpg" alt="Sunflower image">
 					<h3 class="text-uppercase">Sunflower</h3>
 					<p>https://github.com/udacity/sunflower</p>
 				</div>
-				<div class="col-md-4">
-					<img class="img-responsive" src="img/arhitecture.jpg" alt="Bokeh image">
+				<div class="col-md-4" data-toggle="modal" data-target="#viewDetails"
+				data-title="Bokeh" data-text="This was my 3rd project in this class. I learned a lot about HTML and CSS." data-picture="img/architecture.jpg">
+					<img class="img-responsive" src="img/architecture.jpg" alt="Bokeh image">
 					<h3 class="text-uppercase">Bokeh</h3>
 					<p>https://github.com/udacity/bokeh</p>
 				</div>
 			</div>
 		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="viewDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h4 class="modal-title" id="myModalLabel">Title</h4>
+		      </div>
+		      <div class="modal-body">
+		        <img class="img-responsive center-block modal-picture" src="img/tech.jpg">
+		        <p class="modal-text">This was my first project in this class. I learned a lot about HTML and CSS.</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<script>
+			$("#viewDetails").on("show.bs.modal", function (event) {
+			  var trigger = $(event.relatedTarget) // Button that triggered the modal
+			  var title = trigger.data("title")
+			  var picture = trigger.data("picture")
+			  var text = trigger.data("text")
+			  var modal = $(this)
+			  modal.find(".modal-title").text(title)
+			  modal.find(".modal-picture").attr("src", picture);
+			  modal.find(".modal-text").text(text)
+			})
+		</script>
+
 	</body>
 </html>
