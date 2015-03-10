@@ -31,3 +31,7 @@ hr {
 .modal-text {
     margin-top: 10px;
 }
+
+.modal-trigger{
+    cursor: pointer;
+}
